@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import algorithm.TwoSum;
 
-public class testTwoSum {
+public class TestTwoSum {
 
 	public static void main(String[] args) {
 		TwoSum solution = new TwoSum();
