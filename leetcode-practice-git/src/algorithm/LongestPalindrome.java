@@ -1,14 +1,13 @@
 package algorithm;
 
-/**
- * ������Ӵ�
- * ʱ�临�Ӷ�:
- * �ռ临�Ӷ�:
- * @author haoran
- */
-
 public class LongestPalindrome {
-	public String longestPalindrome(String s) {
+	/**
+ 	  * 最长回文子串
+ 	  * 时间复杂度: O(n^2)
+ 	  * 空间复杂度: O(n^2)
+ 	  * @author haoran
+ 	 */
+	public String longestPalindrome1(String s) {
 		if (s == null || s.length() == 0) return s;
 		String res = "";
 		boolean[][] dp = new boolean[s.length()][s.length()];
@@ -24,6 +23,38 @@ public class LongestPalindrome {
 				}
 			}
 		}
-		return res;
+		return res; 
 	}
+	
+	
+	
+	String res = "";
+	/**
+ 	  * 最长回文子串
+ 	  * 时间复杂度: O(n^2)
+ 	  * 空间复杂度: O(1)
+ 	  * @author haoran
+ 	 */
+	public String longestPalindrome2(String s) {
+	    	 if (s == null || s.length() == 0) return s;
+	    	 for (int i = 0; i < s.length(); i++) {
+	    		 // 如果是奇数个数
+	    		 helper(s, i, i);
+	    		 // 如果是偶数个数
+	    		 helper(s, i, i+1);
+	    	 }
+	    	 
+	    	 return res;
+	     }
+	     
+     public void helper(String s, int left, int right) {
+	 while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+		 left--;
+		 right++;
+	 }
+	 String cur = s.substring(left + 1, right);
+	 if (cur.length() > res.length()) {
+		 res = cur;
+	 }
+     }
 }
